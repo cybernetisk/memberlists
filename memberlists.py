@@ -34,7 +34,6 @@ if "v" in sys.argv[1]:
 if "h" in sys.argv[1]:
     valid = ["20%s-%02d"%(sys.argv[1][1:], x) for x in range(7,13)]
 
-#lis = [User(a['name'], a['date_joined'], a['lifetime']) for a in data]
 sort_lis = sorted([User(a['name'], a['date_joined'], a['lifetime']) for a in data], key=lambda lm: lm.get_name().upper())
 
 width = 35
