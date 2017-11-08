@@ -37,10 +37,9 @@ if "h" in sys.argv[1]:
 sort_lis = sorted([User(a['name'], a['date_joined'], a['lifetime']) for a in data], key=lambda lm: lm.get_name().upper())
 
 width = 35
-print("{} | {} | {}".format("Name".ljust(width), "Date".ljust(width-20), "Lifetime".ljust(width)))
 print("")
 for a in sort_lis:
     if str(a.get_date())[:7] in valid or a.get_lifetime():
-        print("{} | {} | {}".format(a.get_name().ljust(width),\
-                re.sub(r'T(.*)', '', str(a.get_date())).ljust(width-20),\
-                str(a.get_lifetime()).ljust(width)))
+        print("{} & {} & {} & \\\ \\hline".format(a.get_name(),\
+                re.sub(r'T(.*)', '', str(a.get_date())),\
+                str(a.get_lifetime())))
