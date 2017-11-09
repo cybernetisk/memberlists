@@ -1,4 +1,5 @@
-import json, re, sys
+import json, re, sys, os
+from shutil import copyfile
 from api import CybApi
 
 from settings import api_url, api_client_id, \
@@ -36,10 +37,20 @@ if "h" in sys.argv[1]:
 
 sort_lis = sorted([User(a['name'], a['date_joined'], a['lifetime']) for a in data], key=lambda lm: lm.get_name().upper())
 
+if os.path.isfile(sys.argv[1]+".tex"):
+        os.remove(sys.argv[1]+".tex")
+
+copyfile("template.tex", sys.argv[1]+".tex")
+
+f = open(sys.argv[1]+'.tex', 'a')
+
+
 width = 35
-print("")
 for a in sort_lis:
     if str(a.get_date())[:7] in valid or a.get_lifetime():
-        print("{} & {} & {} & \\\ \\hline".format(a.get_name(),\
+        f.write("{} & {} & {} & \\\ \\hline \n".format(a.get_name(),\
                 re.sub(r'T(.*)', '', str(a.get_date())),\
                 str(a.get_lifetime())))
+
+f.write("\\end{longtabu} \n \\end{document}")
+f.close()
