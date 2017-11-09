@@ -19,5 +19,5 @@ python3 memberlists.py "v17"
 ```
 Er smart å bygge .tex fila til en PDF ved feks:
 ```bash
-pdftex <semester>.tex
+pdflatex <semester>.tex
 ```
