@@ -17,7 +17,7 @@ Eksempel:
 ```bash
 python3 memberlists.py "v17"
 ```
-Er smart bygge .tex fila til en PDF ved feks:
+Er smart å bygge .tex fila til en PDF ved feks:
 ```bash
 pdftex <semester>.tex
 ```
